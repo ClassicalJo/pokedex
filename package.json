@@ -1,8 +1,8 @@
 {
-  "name": "pokedex-v1.1",
+  "name": "pokedex",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://classicaljo.github.io/pokedex-v1.1",
+  "homepage": "https://classicaljo.github.io/pokedex",
   "dependencies": {
     "gh-pages": "^2.2.0",
     "react": "^16.12.0",
