@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/pokedex-v1.1/static/css/main.dd85fd28.chunk.css",
-    "main.js": "/pokedex-v1.1/static/js/main.d5d1eea9.chunk.js",
-    "main.js.map": "/pokedex-v1.1/static/js/main.d5d1eea9.chunk.js.map",
-    "runtime-main.js": "/pokedex-v1.1/static/js/runtime-main.b773f8ab.js",
-    "runtime-main.js.map": "/pokedex-v1.1/static/js/runtime-main.b773f8ab.js.map",
-    "static/js/2.8b1436fb.chunk.js": "/pokedex-v1.1/static/js/2.8b1436fb.chunk.js",
-    "static/js/2.8b1436fb.chunk.js.map": "/pokedex-v1.1/static/js/2.8b1436fb.chunk.js.map",
-    "index.html": "/pokedex-v1.1/index.html",
-    "precache-manifest.311f6dcac7dbf95216f2ae36ebcc2321.js": "/pokedex-v1.1/precache-manifest.311f6dcac7dbf95216f2ae36ebcc2321.js",
-    "service-worker.js": "/pokedex-v1.1/service-worker.js",
-    "static/css/main.dd85fd28.chunk.css.map": "/pokedex-v1.1/static/css/main.dd85fd28.chunk.css.map"
+    "main.css": "/pokedex/static/css/main.dd85fd28.chunk.css",
+    "main.js": "/pokedex/static/js/main.677eb657.chunk.js",
+    "main.js.map": "/pokedex/static/js/main.677eb657.chunk.js.map",
+    "runtime-main.js": "/pokedex/static/js/runtime-main.0647a4aa.js",
+    "runtime-main.js.map": "/pokedex/static/js/runtime-main.0647a4aa.js.map",
+    "static/js/2.201a5f88.chunk.js": "/pokedex/static/js/2.201a5f88.chunk.js",
+    "static/js/2.201a5f88.chunk.js.map": "/pokedex/static/js/2.201a5f88.chunk.js.map",
+    "index.html": "/pokedex/index.html",
+    "precache-manifest.3ca5e7ce94b1229eb6154cbcf101d061.js": "/pokedex/precache-manifest.3ca5e7ce94b1229eb6154cbcf101d061.js",
+    "service-worker.js": "/pokedex/service-worker.js",
+    "static/css/main.dd85fd28.chunk.css.map": "/pokedex/static/css/main.dd85fd28.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.b773f8ab.js",
-    "static/js/2.8b1436fb.chunk.js",
+    "static/js/runtime-main.0647a4aa.js",
+    "static/js/2.201a5f88.chunk.js",
     "static/css/main.dd85fd28.chunk.css",
-    "static/js/main.d5d1eea9.chunk.js"
+    "static/js/main.677eb657.chunk.js"
   ]
 }
