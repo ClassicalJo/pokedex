@@ -13,8 +13,9 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "sass": "sass --watch src/scss:src/css ",
-    "start": "react-scripts start",
+    "cc": "concurrently -k 'npm:start' 'npm:sass'",
+    "sass": "sass --watch src/assets/scss:src/assets/css ",
+    "start": "react-scripts start & sass --watch src/assets/scss:src/assets/css",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",

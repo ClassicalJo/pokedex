@@ -1,10 +1,21 @@
 import React from "react"
 import { connect } from "react-redux"
-import { closeAllScreens, clearAbilityScreen } from "../actions/Actions";
+import { closeAllScreens, abilityClear } from "../actions/Actions";
+import Link from "../pokemon/Link"
+import { fetchPokemon } from "../app/main/MainPokemon";
+import { fetchPokemonFailure, fetchPokemonSpeciesFailure } from "../actions/PokemonActions";
 
 let cleanup = (props) => {
     props.dispatch(closeAllScreens())
-    props.dispatch(clearAbilityScreen())
+    props.dispatch(abilityClear())
+}
+
+let changePokemon = (props, e) => {
+    cleanup(props)
+    fetchPokemon(props, e.target.id).catch(error => {
+        props.dispatch(fetchPokemonSpeciesFailure(String(error)))
+        props.dispatch(fetchPokemonFailure(String(error)))
+    })
 }
 
 let AbilityScreen = props => {
@@ -25,10 +36,10 @@ let AbilityScreen = props => {
 
     return (
         <div className="screen">
-            <div className="screen-text">ABILITY NAME: {props.ability.name.toUpperCase().replace(/-/, ' ')} </div>
-            <div className="screen-text">ID: {props.ability.id}</div>
-            <div className="screen-text">EFFECT: {props.ability.effect_entries[0].effect}</div>
-            <div className="screen-text">USERS: {props.ability.pokemon.map((x) => String(x.pokemon.name.toUpperCase()) + " ")}</div>
+            <p className="screen-text">ABILITY NAME: {props.ability.name.toUpperCase().replace(/-/, ' ')} </p>
+            <p className="screen-text">ID: {props.ability.id}</p>
+            <p className="screen-text">EFFECT: {props.ability.effect_entries[0].effect}</p>
+            <p className="screen-text" onClick={(e) => changePokemon(props, e)}>USERS: {props.ability.pokemon.map((key, index) => <Link key={index}><span key={key.pokemon.name} id={key.pokemon.name}>{key.pokemon.name.toUpperCase()}</span></Link>)}</p>
             <button className="screen-close" onClick={() => cleanup(props)}>Close screen</button>
         </div>
     )
@@ -36,10 +47,10 @@ let AbilityScreen = props => {
 
 function mapStateToProps(state) {
     return {
-        ability: state.abilityScreenReducer.ability,
-        ready: state.abilityScreenReducer.ready,
-        isFetching: state.abilityScreenReducer.isFetching,
-        error: state.abilityScreenReducer.error,
+        ability: state.abilityReducer.ability,
+        ready: state.abilityReducer.ready,
+        isFetching: state.abilityReducer.isFetching,
+        error: state.abilityReducer.error,
     }
 }
 

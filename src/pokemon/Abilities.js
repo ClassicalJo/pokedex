@@ -2,21 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
     showAbilityScreen,
-    fetchAbilityBegin,
-    fetchAbilitySuccess,
-    fetchAbilityFailure
+    abilityFetchBegin,
+    abilityFetchSuccess,
+    abilityFetchFailure
 } from '../actions/Actions'
 
 let handleClickAbility = async (props, e) => {
     props.dispatch(showAbilityScreen())
-    props.dispatch(fetchAbilityBegin())
+    props.dispatch(abilityFetchBegin())
     let response = await fetch(e.target.id)
     let data = await response.json()
-    await props.dispatch(fetchAbilitySuccess(data))
+    await props.dispatch(abilityFetchSuccess(data))
 }
-
-let handleError = fn => (props, e) => fn(props, e).catch(error => props.dispatch(fetchAbilityFailure(String(error))))
-let safeHandleClickAbility = handleError(handleClickAbility)
 
 let Abilities = (props) => {
     return (
@@ -25,7 +22,7 @@ let Abilities = (props) => {
             {props.abilities.map(key =>
                 <li key={key.ability.name}
                     id={key.ability.url}
-                    onClick={(e) => safeHandleClickAbility(props, e)}
+                    onClick={(e) => handleClickAbility(props, e).catch(error => props.dispatch(abilityFetchFailure(String(error))))}
                 >{key.ability.name.toUpperCase().replace(/-/, ' ')}</li>)}
         </div>)
 }

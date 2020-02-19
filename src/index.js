@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./App";
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, compose } from "redux"
-import thunk from "redux-thunk"
-import rootReducer from './reducers/Reducers'
+import { createStore, compose } from "redux"
+import rootReducer from './reducers/RootReducer'
 
 const STORE = createStore(rootReducer,
     compose(

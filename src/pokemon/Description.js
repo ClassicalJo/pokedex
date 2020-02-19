@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from "react-redux"
 
-function returnFirstResult(array) {
+export function returnFirstResult(array) {
     let results = array.filter(key => key.language.name === "en" && key.flavor_text !== undefined)
-    return results[0].flavor_text
+    return results[0].flavor_text || ""
 }
 
 let Description = (props) => {

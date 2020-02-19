@@ -1,6 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
-import { closeAllScreens } from "../actions/Actions"
+import { closeAllScreens, changeMainScreen, moveFetchFailure, listFetchFailure } from "../actions/Actions"
+import { fetchMove, fetchMovelist } from "../app/main/MainMoves"
+import Link from "../pokemon/Link"
 
 function bubbleSort(list) {
     let swapped
@@ -36,6 +38,12 @@ function levelsFirstSort(list) {
 
 }
 
+let handleClick = (props, e) => {
+    props.dispatch(closeAllScreens())
+    props.dispatch(changeMainScreen("moves"))
+    fetchMove(props, e.target.id).catch(error => props.dispatch(moveFetchFailure(String(error))))
+    fetchMovelist(props).catch(error => props.dispatch(listFetchFailure(String(error))))
+}
 
 let MoveScreen = (props) => {
     let movesArray = []
@@ -44,7 +52,7 @@ let MoveScreen = (props) => {
     levelsFirstSort(movesArray)
     return (
         <div className="screen">
-            {movesArray.map((x) => (<div key={x[1]}> {x[1].toUpperCase().replace(/-/, ' ')} learned at: {x[0]}</div>))}
+            {movesArray.map(key => <p key={key[1]}> <Link><span id={key[1]} key={key[1]} onClick={(e) => handleClick(props, e)}>{key[1].toUpperCase()}</span></Link>learned at: {key[0]}</p>)}
             <p onClick={() => props.dispatch(closeAllScreens())} className="screen-close" > Close screen</p>
         </div >
     )

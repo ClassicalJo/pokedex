@@ -19,13 +19,22 @@
 }
 
 .main {
-  grid-area: main;
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
   width: 1fr;
   column-gap: 1em;
   grid-template-rows: 2em 2em 2em 5em 2em 10em 7em;
   grid-template-areas: "name name" "sprites height" "sprites weight" "sprites types" "number moves" "stats abilities" "description description";
+}
+.main p {
+  margin: 0;
+}
+.main img {
+  height: 100%;
+  transform: scaleX(-1);
+  filter: grayscale(100%);
+  grid-area: image;
+  justify-self: center;
 }
 
 .logo {
@@ -45,16 +54,6 @@ a:visited {
   color: black;
 }
 
-.header {
-  grid-area: header;
-  justify-self: center;
-  align-self: center;
-}
-
-h1 {
-  margin: 0px;
-}
-
 .sidebar {
   height: 30em;
   display: flex;
@@ -62,7 +61,7 @@ h1 {
   grid-area: sidebar;
 }
 
-.pokemon-list {
+.list {
   grid-area: list;
   flex: 1;
   flex-direction: column;
@@ -160,14 +159,6 @@ h1 {
   background-color: transparent;
   font-size: xx-small;
   margin: 0px;
-}
-
-img {
-  height: 100%;
-  transform: scaleX(-1);
-  filter: grayscale(100%);
-  grid-area: image;
-  justify-self: center;
 }
 
 .abilities {

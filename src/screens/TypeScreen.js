@@ -1,10 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
-import { closeAllScreens, clearTypeScreen } from "../actions/Actions"
+import { closeAllScreens, typeClear, typeFetchFailure } from "../actions/Actions"
+import { fetchType } from "../app/main/MainTypes"
+import Link from "../pokemon/Link"
 
 let cleanup = (props) => {
     props.dispatch(closeAllScreens())
-    props.dispatch(clearTypeScreen())
+    props.dispatch(typeClear())
 }
 
 let TypeScreen = props => {
@@ -23,29 +25,32 @@ let TypeScreen = props => {
                 <p onClick={() => cleanup(props)} className="screen-close">Close screen</p>
             </div>)
     return (
-        <div className="screen">
-            <div className="screen-text">TYPE NAME: {props.type.name.toUpperCase()}</div>
-            <div className="screen-text">ID: {props.type.id}</div>
-            <div className="screen-text">
-                2x DAMAGE FROM: {props.type.damage_relations.double_damage_from.map((x) => String(x.name.toUpperCase()) + " ")}<br />
-                2x DAMAGE TO: {props.type.damage_relations.double_damage_to.map((x) => String(x.name.toUpperCase()) + " ")}</div>
-            <div className="screen-text">
-                1/2 DAMAGE FROM: {props.type.damage_relations.half_damage_from.map((x) => String(x.name.toUpperCase()) + " ")}<br />
-                1/2 DAMAGE TO: {props.type.damage_relations.half_damage_to.map((x) => String(x.name.toUpperCase()) + " ")}</div>
-            <div className="screen-text">
-                NO DAMAGE FROM: {props.type.damage_relations.no_damage_from.map((x) => String(x.name.toUpperCase()) + " ")}<br />
-                NO DAMAGE TO: {props.type.damage_relations.no_damage_to.map((x) => String(x.name.toUpperCase()) + " ")}</div>
+        <div className="screen" onClick={(e) => { if (e.target.getAttribute("attr")) fetchType(props, e.target.getAttribute("attr")).catch(error => props.dispatch(typeFetchFailure(String(error)))) }}>
+            <p className="screen-text" attr={props.type.name}>TYPE NAME: {props.type.name.toUpperCase()}</p>
+            <p className="screen-text">ID: {props.type.id}</p>
+            <p className="screen-text">2x DAMAGE FROM: {props.type.damage_relations.double_damage_from.map((key, index) =>
+                <Link key={index}><span attr={key.name}>{key.name.toUpperCase()}</span></Link>)}</p>
+            <p className="screen-text">2x DAMAGE TO: {props.type.damage_relations.double_damage_to.map((key, index) =>
+                <Link key={index}><span attr={key.name}>{key.name.toUpperCase()}</span></Link>)}</p>
+            <p className="screen-text">1/2 DAMAGE FROM: {props.type.damage_relations.half_damage_from.map((key, index) =>
+                <Link key={index}><span attr={key.name}>{key.name.toUpperCase()}</span></Link>)}</p>
+            <p className="screen-text">1/2 DAMAGE TO: {props.type.damage_relations.half_damage_to.map((key, index) =>
+                <Link key={index}><span attr={key.name}>{key.name.toUpperCase()}</span></Link>)}</p>
+            <p className="screen-text">NO DAMAGE FROM: {props.type.damage_relations.no_damage_from.map((key, index) =>
+                <Link key={index}><span attr={key.name}>{key.name.toUpperCase()}</span></Link>)}</p>
+            <p className="screen-text">NO DAMAGE TO: {props.type.damage_relations.no_damage_to.map((key, index) =>
+                <Link key={index}><span attr={key.name}>{key.name.toUpperCase()}</span></Link>)}</p>
             <p onClick={() => cleanup(props)} className="screen-close">Close screen</p>
-        </div>
+        </div >
     )
 }
 
 function mapStateToProps(state) {
     return {
-        type: state.typeScreenReducer.type,
-        ready: state.typeScreenReducer.ready,
-        isFetching: state.typeScreenReducer.isFetching,
-        error: state.typeScreenReducer.error,
+        type: state.typeReducer.type,
+        ready: state.typeReducer.ready,
+        isFetching: state.typeReducer.isFetching,
+        error: state.typeReducer.error,
     }
 }
 export default connect(mapStateToProps)(TypeScreen)

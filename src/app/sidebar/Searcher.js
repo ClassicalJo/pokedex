@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { pokemonListAddFilter } from '../../actions/Actions'
+import { listAddFilter } from '../../actions/Actions'
 
 let handleChange = (props, e) => {
-    if (e.target.value === "") props.dispatch(pokemonListAddFilter(null))
-    else props.dispatch(pokemonListAddFilter(e.target.value.toLowerCase().split("")))
+    if (e.target.value === "") props.dispatch(listAddFilter(null))
+    else props.dispatch(listAddFilter(e.target.value.toLowerCase().split("")))
 }
 
 let Searcher = (props) => {
+    if (props.mainScreen === "home") return <div className="searcher"></div>
     return (
         <div className="searcher">
             <input
@@ -22,7 +23,8 @@ let Searcher = (props) => {
 
 function mapStateToProps(state) {
     return {
-        results: state.pokemonListReducer.pokemonList.results
+        results: state.listReducer.list.results,
+        mainScreen: state.UIReducer.mainScreen
     }
 }
 

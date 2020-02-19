@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux"
-import { spriteIncrement, spriteDecrement } from '../actions/Actions';
+import { spriteIncrement, spriteDecrement } from '../actions/PokemonActions';
 
 let handleClickNext = (props) => {
     if (props.currentIndex < 3) props.dispatch(spriteIncrement())

@@ -1,0 +1,65 @@
+.main-types {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100%;
+}
+.main-types img {
+  position: absolute;
+  transform: scale(4);
+  opacity: 0.25;
+  filter: grayscale(1);
+  place-self: center;
+  pointer-events: none;
+}
+.main-types .type-data {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+.main-types .type-data h2 {
+  margin: 0 0 1rem 0;
+}
+.main-types .type-data p {
+  margin: 0;
+}
+.main-types .type-pokemon {
+  display: grid;
+  flex: 1;
+  grid: 100%/100%;
+  overflow: hidden;
+}
+.main-types .type-pokemon * {
+  grid-column: 1/1;
+  grid-row: 1/1;
+}
+.main-types .type-pokemon .type-lists {
+  display: flex;
+  border: 3px inset;
+}
+.main-types .type-pokemon .type-lists ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: 1;
+  overflow-y: scroll;
+  text-align: center;
+}
+.main-types .type-pokemon .type-lists li:first-child {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.main-types .type-pokemon .type-lists .type-lists-pokemon {
+  direction: rtl;
+}
+.main-types .type-pokemon .type-lists .type-lists-pokemon * {
+  direction: ltr;
+}
+.main-types .type-pokemon img {
+  height: 100%;
+  z-index: -1;
+  opacity: 0.25;
+  place-self: center;
+  filter: grayscale(1);
+}
+
+/*# sourceMappingURL=maintypes.css.map */

@@ -1,0 +1,37 @@
+.main-moves {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.main-moves img {
+  position: absolute;
+  transform: scale(4);
+  opacity: 0.25;
+  filter: grayscale(1);
+  place-self: center;
+  pointer-events: none;
+}
+.main-moves .moves-data {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.main-moves .moves-data > * {
+  margin: 1rem 0;
+}
+.main-moves .moves-data > *:last-child {
+  margin-bottom: 0;
+}
+.main-moves .moves-data p {
+  margin: 0;
+}
+.main-moves .moves-data .moves-machines {
+  overflow-y: scroll;
+  border: 3px groove;
+  text-justify: auto;
+  flex: 1;
+}
+
+/*# sourceMappingURL=mainmoves.css.map */
